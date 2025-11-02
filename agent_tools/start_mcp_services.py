@@ -67,11 +67,11 @@ class MCPServiceManager:
     
     def start_service(self, service_id, config):
         """Start a single service"""
-        script_path = config['script']
+        script_path = Path(__file__).parent / config['script']
         service_name = config['name']
         port = config['port']
         
-        if not Path(script_path).exists():
+        if not script_path.exists():
             print(f"❌ Script file not found: {script_path}")
             return False
         
